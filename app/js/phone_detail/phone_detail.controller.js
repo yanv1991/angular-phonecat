@@ -1,4 +1,4 @@
-'use strict';
+/*'use strict';
 
 angular.module('phonecat.phoneDetail').controller('PhoneDetailCtrl',
   ['$routeParams', 'Phone', function($routeParams, Phone) {
@@ -11,3 +11,25 @@ angular.module('phonecat.phoneDetail').controller('PhoneDetailCtrl',
       ctrl.mainImageUrl = imageUrl;
     };
   }]);
+  */
+System.register([], function(exports_1, context_1) {
+    "use strict";
+    var __moduleName = context_1 && context_1.id;
+    function PhoneDetailCtrl($routeParams, Phone) {
+        var vm = this;
+        vm.phone = Phone.get({ phoneId: $routeParams.phoneId }, function (phone) {
+            vm.mainImageUrl = phone.images[0];
+        });
+        vm.setImage = function (imageUrl) {
+            vm.mainImageUrl = imageUrl;
+        };
+    }
+    return {
+        setters:[],
+        execute: function() {
+            PhoneDetailCtrl.$inject = ['$routeParams', 'Phone'];
+            exports_1("default",PhoneDetailCtrl);
+        }
+    }
+});
+//# sourceMappingURL=phone_detail.controller.js.map
