@@ -2,6 +2,10 @@
 
 angular.module('phonecat.phoneList', ['phonecat.core']);
 */
-import PhoneListCtrl from './phone_list.controller';
-export default angular.module('phonecat.list', ['phonecat.core'])
-  .controller('PhoneListCtrl', PhoneListCtrl);
+import PhoneList from './phone_list.component';
+import upgradeAdapter from '../core/upgrade_adapter';
+export default angular.module('phonecat.list', [
+    'phonecat.core'
+])
+	.directive('pcPhoneList',
+    <angular.IDirectiveFactory>upgradeAdapter.downgradeNg2Component(PhoneList));

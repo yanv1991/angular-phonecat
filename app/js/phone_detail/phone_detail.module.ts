@@ -7,9 +7,12 @@ angular.module('phonecat.phoneDetail', [
 ]);
 */
 
-import PhoneDetailCtrl from './phone_detail.controller';
+import PhoneDetail from './phone_detail.component';
+import upgradeAdapter from '../core/upgrade_adapter';
 export default angular.module('phonecat.detail', [
-    'phonecat.core',
-    'ngRoute'
-  ])
-  .controller('PhoneDetailCtrl', PhoneDetailCtrl);
+    'ngRoute',
+    'phonecat.core'
+])
+	.directive('pcPhoneDetail',
+    <angular.IDirectiveFactory>upgradeAdapter.downgradeNg2Component(PhoneDetail))
+
